@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useEffect, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 
 import { buttonData } from "../../Data/buttonData";
@@ -24,10 +24,9 @@ function sortingProductByCriteria(data, sortValue) {
 const Page = () => {
   const sectionRef = useRef(null);
   const { cart, searchProduct } = useContext(CartContextProvider);
-
-  const params = useSearchParams();
-  const sortValue = params.get("Sort");
-
+  const router = useRouter();
+  const params = useSearchParams().get("Sort");
+ 
   const [button, setButton] = useState([]);
   const [cartValue, setCartValue] = cart;
   const [filterProduct, setFilterProduct] = useState("All");
@@ -56,12 +55,6 @@ const Page = () => {
     queryFn: fetchData,
   });
 
-  // !! Back To Top
-  const handleTop = () => {
-    sectionRef.current?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
   // !! Fetching the Unique Category Product >>>
   const handleClick = (e) => {
     setFilterProduct(e.target.dataset.name);
@@ -71,18 +64,22 @@ const Page = () => {
     setFilterProduct(e.target.value);
   };
 
-  
+  console.log(params);
+  useEffect(() => {
+    router.push("/product");
+  },[])
   useEffect(() => {
     if (data && data.length > 0) {
-      const x = sortingProductByCriteria(data, sortValue);
+      console.log(params);
+      const x = sortingProductByCriteria(data, params);
       setSortedData(x);
     } else {
       console.warn('Data is not available or empty.');
     }
-  },[data,sortValue])
+  },[params])
   return (
-    <div className="grid w-full min-h-screen px-3 py-8 place-items-center sm:py-4 sm:pb-12 md:px-0">
-      <div ref={sectionRef} className="mt-12 md-4 sm:mt-16 md:mb-20">
+    <div className="grid min-h-screen px-3 py-8 place-items-center sm:py-10 sm:pb-12 md:px-0">
+      <div ref={sectionRef} className="mt-12 md-4 sm:mt-16 md:mb-12">
         <h2 className="text-2xl font-extrabold text-left text-transparent uppercase bg-gradient-to-r from-natural1 to-natural2 bg-clip-text md:text-center md:text-4xl lg:text-6xl">
           Get your desired Item.
         </h2>

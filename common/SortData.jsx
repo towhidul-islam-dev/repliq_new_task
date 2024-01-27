@@ -3,8 +3,8 @@ import { useRouter } from "next/navigation";
 import Select from "react-select";
 
 const options = [
-  { value: "category", label: "category" },
   { value: "price", label: "price" },
+  { value: "category", label: "category" },
   { value: "rating", label: "rating" },
 ];
 
