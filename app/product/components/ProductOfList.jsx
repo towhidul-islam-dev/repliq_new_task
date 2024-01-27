@@ -36,13 +36,13 @@ const ProductOfList = ({ product, isLoading, cart, setCart }) => {
                         rating,
                         category: cat,
                     } = singleProduct;
-                    const titleLength = title.split(" ").slice(0, 5).join(" ");
+                    const titleLength = title.split(" ").slice(0, 4).join(" ");
                     return (
                         <ProductCard
                             key={id}
                             addProduct={() => getProduct(id)}
                             id={id}
-                            title={title}
+                            title={titleLength}
                             img={img}
                             price={price}
                             rating={rating}

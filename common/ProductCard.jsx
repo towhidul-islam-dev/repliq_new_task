@@ -6,6 +6,7 @@ import ButtonFilled from "./ButtonFilled";
 import dynamic from "next/dynamic";
 import { HiStar } from "react-icons/hi2";
 import { HiShoppingCart } from "react-icons/hi";
+import Image from "next/image";
 const LazyComponent = dynamic(() => import("../common/LazyComponent"));
 
 const ProductCard = (props) => {
@@ -22,19 +23,23 @@ const ProductCard = (props) => {
     <>
       <div
         key={id}
-        className="z-10 grid w-full max-w-md gap-2 p-4 text-left transition-transform duration-200 ease-in-out border-2 border-blue-400 rounded-md h-max animate-moveUp bg-natural3 hover:scale-105"
+        className="z-10 grid w-full h-full max-w-md gap-2 p-4 text-left transition-transform duration-200 ease-in-out border-2 border-blue-400 rounded-md h-60 animate-moveUp bg-natural3 hover:scale-105"
       >
-        <Link href={`/product/${id}`}  className="">
+        <Link href={`/product/${id}`} className="">
           <div>
-            <LazyComponent img={img} />
+            <LazyComponent img={img} title={title} />
+
             <div className="z-20 pt-3 text-natural2">
-              <h2 className="mt-2 text-sm font-semibold uppercase">
+              <h2 className="mt-2 pb-2 text-sm font-semibold uppercase">
                 {category}
               </h2>
-              <div>
+              {/* <>
                 <h2 className="text-sm font-medium line-clamp-1 sm:text-base">
                   {title}
                 </h2>
+              </> */}
+              <div className="text-sm font-medium sm:text-base line-clamp-2 whitespace-nowrap">
+                {title}
               </div>
               <div className="flex items-center justify-between gap-4 py-2">
                 <h2>

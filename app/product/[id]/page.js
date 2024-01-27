@@ -1,16 +1,18 @@
 "use client";
+import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
+import { FaStar } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-
-import { HiShoppingCart } from "react-icons/hi";
 import { HiHeart, HiStar } from "react-icons/hi2";
-import { useQuery } from "@tanstack/react-query";
+import CartContextProvider from "../../../context/cartContext";
+import { HiShoppingCart } from "react-icons/hi";
 import { toast } from "react-hot-toast";
-
 import ButtonFilled from "../../../common/ButtonFilled";
 
 const ProductDetailsPage = ({ params }) => {
+  const { cart } = useContext(CartContextProvider);
+  const [myCart, setMyCart] = cart;
   const productId = +params.id;
   const [product, setProduct] = useState([]);
   const [uniqueItem, setUniqueItem] = useState([]);
@@ -73,7 +75,7 @@ const ProductDetailsPage = ({ params }) => {
                 <div className="flex items-center justify-center min-h-screen rounded-lg sm:gap-4 md:p-5">
                   <div className="grid rounded-md animate-moveInLeft place-items-center bg-natural3 drop-shadow-lg">
                     <Image
-                      className="m-4 rounded-md "
+                      className="m-4 rounded-md aspect-square"
                       src={img}
                       n
                       alt=""
@@ -83,30 +85,30 @@ const ProductDetailsPage = ({ params }) => {
                     />
 
                     <div className="flex justify-between gap-3 my-4 items-cener">
-                      <div className="grid w-16 place-items-center overflow-hidden rounded-md bg-baseClr1 p-2 shadow-md transition-all duration-200 ease-out hover:scale-[1.1]  md:w-24 ">
+                      <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-md bg-baseClr1 p-1 shadow-md transition-all duration-200 ease-out hover:scale-[1.1] md:h-24 md:w-24 ">
                         <Image
-                          className=""
+                          className="aspect-square"
                           src={img}
                           alt=""
-                          width={80}
+                          width={120}
                           height={50}
                         />
                       </div>
-                      <div className="grid w-16 place-items-center overflow-hidden rounded-md bg-baseClr1 p-2 shadow-md transition-all duration-200 ease-out hover:scale-[1.1]  md:w-24">
+                      <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-md bg-baseClr1 p-1 shadow-md transition-all duration-200 ease-out hover:scale-[1.1] md:h-24 md:w-24">
                         <Image
-                          className=""
+                          className="aspect-square"
                           src={img}
                           alt=""
-                          width={80}
+                          width={100}
                           height={50}
                         />
                       </div>
-                      <div className="grid w-16 place-items-center overflow-hidden rounded-md bg-baseClr1 p-2 shadow-md transition-all duration-200 ease-out hover:scale-[1.1]  md:w-24">
+                      <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-md bg-baseClr1 p-1 shadow-md transition-all duration-200 ease-out hover:scale-[1.1] md:h-24 md:w-24">
                         <Image
-                          className=""
+                          className="aspect-square"
                           src={img}
                           alt=""
-                          width={80}
+                          width={120}
                           height={50}
                         />
                       </div>
