@@ -1,19 +1,17 @@
 "use client";
-import Link from "next/link";
 import React, { useState, useEffect, useContext } from "react";
+import Link from "next/link";
+import { usePathname} from "next/navigation";
+
 import { VscAccount } from "react-icons/vsc";
 import { RiShoppingBagFill } from "react-icons/ri";
 import { FaBars } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-import { BsCartPlus } from "react-icons/bs";
+
 import SearchButton from "../SearchButton";
-import CartContextProvider from "../../context/cartContext";
-import { usePathname} from "next/navigation";
 
 const NavbarMain = ({ params }) => {
   const currentPath = usePathname();
-  const { cart } = useContext(CartContextProvider);
-  const [cartItem, setCartItem] = cart;
   const [toggleNav, setToggleNav] = useState(false);
 
   // ? Navbar Toggle Functionality...
@@ -24,6 +22,9 @@ const NavbarMain = ({ params }) => {
     setToggleNav(true);
   };
 
+  useEffect(() => {
+    setToggleNav(true)
+  },[])
 
   return (
     <div className="fixed left-0 top-0 z-[999] w-full bg-baseClr1 md:relative md:bg-transparent">

@@ -19,7 +19,7 @@ export default function Home() {
                   </h2>
                 </div>
 
-                <p className="py-4 text-sm text-left text-natural2 sm:text-base md:text-base">
+                <p className="py-4 text-sm text-left text-natural2 sm:text-base md:text-base line-clamp-2" >
                 Revolutionize your style at our cutting-edge online store. Explore a curated fusion of fashion and tech. Elevate your lifestyle with seamless shopping—trends delivered to your doorstep. Click, shop, and redefine chic effortlessly.
                 Elevate Your Wardrobe, Elevate Your Home: Navigate Trends with Our E-Commerce Elegance!
                 </p>
