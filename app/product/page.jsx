@@ -64,13 +64,11 @@ const Page = () => {
     setFilterProduct(e.target.value);
   };
 
-  console.log(params);
   useEffect(() => {
     router.push("/product");
   },[])
   useEffect(() => {
     if (data && data.length > 0) {
-      console.log(params);
       const x = sortingProductByCriteria(data, params);
       setSortedData(x);
     } else {
